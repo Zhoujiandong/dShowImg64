@@ -12,13 +12,13 @@
             return;
         }
         var limitSize = obj.limitSize ? parseInt(obj.limitSize) : 0;
-        if (size > limitSize) {
-            reader.readAsDataURL(files);              // Ñ¹Ëõ
+        if (size < limitSize) {
+            reader.readAsDataURL(files);              
             reader.onloadend = function () {
                 dom.style.backgroundImage = "url("+this.result+")";
                 document.querySelector(".default-box").style.display = "none";
             }
-        } else {                                     //²»Ñ¹Ëõ
+        } else {                                    
             var imageUrl = this.getObjectURL(files);
             this.convertImg(imageUrl, function (base64Img) {
                 dom.style.backgroundImage = "url("+base64Img+")";
